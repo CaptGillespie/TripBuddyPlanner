@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>New Job</title>
+</head>
+<body>
+<div class="container">
+        <div class="header">
+            <div class = "header_left">
+                <h1>&emsp;Hello {{ request.session.logged_in }}</h1>
+            </div>
+            <div class="header_right">
+                <div class = "logout_link">
+                    <a href="logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    <div class="create_bay">
+        <form class = "create_job" action = "/createtrip" method = "POST">
+            {% csrf_token %}
+            <h3>Destination: <input class="title" name="destination" type="text"></h3>
+            <h3>Start Date: <input class="description" name="start_date" type="date"></h3>
+            <h3>End Date: <input class="location" name="end_date" type="date"></h3>
+            <h3>Plan: <input class="plan" name="plan" type="textarea"></h3>
+            <input type ="submit" value = "cancel">
+            <input type="submit" value = "submit">
+        </form>
+    </div>
+    <div class = "error_area">
+            {% if messages %}
+            <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+
+
+
+
+</div>
+    
+</body>
+</html>
+
+<style>
+
+    .container{
+        padding: 40px;
+        height: 450px;
+        margin: 50px;    
+        width: 810px;
+        border: 2px solid grey;
+        background-color: rgb(137, 201, 201);
+        overflow: auto;
+        padding: 80px;
+    }
+    .everyones_jobs, tr, th, td{
+        outline: 2px solid black;
+        height: 50px;
+        width: 800px;
+        text-align: center;
+    }
+    .new_job{
+        margin-left: 50px;
+        border: 2px solid black;
+        width: 120px;
+        font-size: 16px;
+    }
+    .edit_bay{
+        padding: 40px;
+    }
+    .title{
+        height: 30px;
+        width: 380px;
+        margin-left: 50px;
+    }
+    .description{
+        height: 50px;
+        width: 150px;
+        margin-left: 60px;
+    }
+    .location{
+        height: 50px;
+        width: 150px;
+        margin-left: 67px;
+    }
+    .plan{
+        margin-left: 105px;
+        height:30px;
+        width: 380px;
+    }
+    .header{
+        height: 90px;
+        width: 800px;
+        border: 2px solid black;
+    }
+    .header_left{
+        height: 90px;
+        width: 300px;
+        display: inline-block;
+    }
+    .header_right{
+        height: 90px;
+        width: 450px;
+        display: inline-block;
+        vertical-align: top;
+        margin-left: 40px;
+    }
+    .logout_link{
+        height: 20px;
+        width: 50px;
+        display: inline-block;
+        vertical-align: bottom;
+        margin-left: 150px;
+        margin-top: 40px;
+        display: inline-block;
+    }
+    .excessive_div{
+        display: inline-block;
+        vertical-align: bottom;
+        margin-top: 20px;
+    }
+    .header h1{
+    margin-top: 25px;
+    }
+    </style> 

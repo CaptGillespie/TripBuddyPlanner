@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Job</title>
+</head>
+<body>
+<div class="container">
+        <div class="header">
+            <div class = "header_left">
+                <h1>&emsp;Hello {{ request.session.logged_in }}</h1>
+            </div>
+            <div class="header_right">
+                <div class = "logout_link">
+                    
+                    <a href="dashboard">Dashboard</a>&emsp;&emsp;&emsp;
+                    <a href="logout">Logout</a> 
+                </div>
+            </div>
+        </div>
+        <div class="view_bay">
+            <h3>{{trip.destination}}</h3>
+            <div class="job_details">
+            Start Date: {{trip.start_date}}<br>
+            End Date: {{trip.end_date}}<br>
+            Created On: {{trip.created_at}}<br>
+            Last Updated: {{trip.updated_at}}<br>
+            Plan: {{trip.plan}}<br>
+            Created by:{{trip.user.first}} 
+            </div>
+        <div class="going">
+            <h3>People who've joined the trip:</h3>
+            <p>black belt many-to-many data</p>
+        </div>
+        </div>
+    
+</div>
+</body>
+</html>
+
+<style>
+.going{
+    height: 100px;
+    width: 500px;
+    outline: 2px solid black;
+    margin-top: 40px;
+    margin-left: 90px;
+}
+.container{
+    padding: 40px;
+    height: 450px;
+    margin: 50px;    
+    width: 810px;
+    border: 2px solid grey;
+    background-color: rgb(137, 201, 201);
+    overflow: auto;
+    padding: 80px;
+}
+.everyones_jobs, tr, th, td{
+    outline: 2px solid black;
+    height: 50px;
+    width: 800px;
+    text-align: center;
+}
+.new_job{
+    margin-left: 50px;
+    border: 2px solid black;
+    width: 120px;
+    font-size: 16px;
+}
+.edit_bay{
+    padding: 40px;
+}
+.view_bay{
+    height: 300px;
+    width: 700px;
+    border: 2px solid black;
+    padding: 50px;
+}
+.title{
+    height: 30px;
+    width: 380px;
+    margin-left: 72px;
+}
+.description{
+    height: 70px;
+    width: 580px;
+    margin-left: 18px;
+}
+.location{
+    height: 30px;
+    width: 380px;
+    margin-left: 40px;
+}
+.header{
+    height: 90px;
+    width: 800px;
+    border: 2px solid black;
+}
+.header_left{
+    height: 90px;
+    width: 300px;
+    display: inline-block;
+}
+.header_right{
+    height: 90px;
+    width: 450px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 40px;
+}
+.logout_link{
+    height: 20px;
+    width: 250px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 150px;
+    margin-top: 40px;
+    display: inline-block;
+}
+.excessive_div{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-top: 20px;
+}
+</style> 

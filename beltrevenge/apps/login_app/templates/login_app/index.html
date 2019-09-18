@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Registration</title>
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'login_app/css/style.css' %}"> -->
+</head>
+<body>
+    <div class ="container">
+        <div class="left_side">
+            <h1>Registration</h1>
+            <p>Are you new to our site? Sign in to continue!</p><br>
+
+            <form class = "new_use" action = "/createUser" method = "POST">
+                {% csrf_token %}
+                <h3>First Name: <input class="first" name="first" type="text"></h3><br>
+                <h3>Last Name: <input class="last" name="last" type="text"></h3><br>
+                <h3>Email: <input class="email" name="email" type="email"></h3><br>
+                <h3>Password: <input class="password" name="password" type="password"></h3><br>
+                <h3>Confirm Password: <input class="c_password" name="c_password" type="password"></h3><br>
+                <input class ="register_button" type="submit" value="Register!">
+            </form>
+        </div>
+
+        <div class="right_side">
+            <form action="/login" method="POST">
+                {% csrf_token %}
+                <h1>Login</h1>
+                <p>Existing user? Sign back in!</p><br>
+                <h3>Email: <input class = "log_email" name="email" type="email"></h3><br>
+                <h3>Password: <input class = "log_password" name="password" type ="password"><br></h3><br>
+            <input class="login_button" type="submit" value="Log In">
+            </form>
+        </div>
+
+        <div class="complaint_box">
+                {% if messages %}
+                <ul style="list-style: none;"class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+                </ul>
+                {% endif %}
+        </div>
+
+    </div>
+    
+</body>
+</html>
+
+
+<style>
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container{
+    height: 380px;
+    width: 835px;
+    background-color: rgb(183, 219, 255);
+    padding: 75px;
+    align-content: center;
+    margin: 50px;
+}
+.left_side{
+    height: 350px;
+    width: 450px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+}
+.right_side{
+    height: 350px;
+    width: 350px;
+    display: inline-block;
+}
+.complaint_box{
+    height: 70px;
+    width: 700px;
+    outline: 2px solid black;
+    text-align: center;
+    margin-left: 50px;
+    color: red;
+    list-style-type: none;
+}
+.first{
+    margin-left: 60px;
+    height: 25px;
+    width: 176px;
+}
+.last{
+    margin-left: 65px;
+    height: 25px;
+    width: 175px;
+}
+.email{
+    margin-left: 102px;
+    height: 25px;
+    width: 175px;
+}
+.password{
+    margin-left: 75px;
+    height: 25px;
+    width: 175px;
+}
+.c_password{
+    margin-left: 4px;
+    height: 25px;
+    width: 175px;
+}
+.log_email{
+    margin-left: 32px;
+    height: 25px;
+    width: 175px;
+}
+.log_password{
+    margin-left: 5px;
+    height: 25px;
+    width: 175px;
+}
+.login_button{
+    height: 25px;
+    width: 100px;
+    margin-left: 130px;
+}
+.register_button{
+    height: 25px;
+    width: 100px;
+    margin-left: 200px;
+}
+</style>

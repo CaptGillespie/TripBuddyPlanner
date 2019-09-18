@@ -1,0 +1,70 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container{
+    height: 400px;
+    width: 835px;
+    background-color: rgb(183, 219, 255);
+    padding: 75px;
+    align-content: center;
+    margin: 50px;
+}
+.left_side{
+    height: 400px;
+    width: 450px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+}
+.right_side{
+    height: 400px;
+    width: 350px;
+    display: inline-block;
+}
+.first{
+    margin-left: 60px;
+    height: 25px;
+    width: 176px;
+}
+.last{
+    margin-left: 65px;
+    height: 25px;
+    width: 175px;
+}
+.email{
+    margin-left: 102px;
+    height: 25px;
+    width: 175px;
+}
+.password{
+    margin-left: 75px;
+    height: 25px;
+    width: 175px;
+}
+.c_password{
+    margin-left: 4px;
+    height: 25px;
+    width: 175px;
+}
+.log_email{
+    margin-left: 32px;
+    height: 25px;
+    width: 175px;
+}
+.log_password{
+    margin-left: 5px;
+    height: 25px;
+    width: 175px;
+}
+.login_button{
+    height: 25px;
+    width: 100px;
+    margin-left: 130px;
+}
+.register_button{
+    height: 25px;
+    width: 100px;
+    margin-left: 200px;
+}

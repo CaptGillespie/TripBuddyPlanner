@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- {% load static %}
+    <link rel="stylesheet" href="{% static 'belt_app/css/style.css' %}"> -->
+    <title>Trip Buddy</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class = "header_left">
+                <h1>&emsp;Welcome {{ request.session.logged_in }}! Let's travel!</h1>
+            </div>
+            <div class="header_right">
+                <div class = "logout_link">
+                    <a href="logout">Logout</a>
+                </div>
+                <div class="excessive_div">
+                    <a href="/new"><button class="new_trip" action="/new">Create a new trip!</button></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="your_trips">
+            <h2>Your Trips:</h2>
+            <table class="your_trips">
+                <tr>
+                    <th>Destination</th> 
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Plan</th>
+                    <th>Action</th>
+                </tr>
+                {% for j in trips %}
+                {% if request.session.user_id == j.user.id %}
+                <tr>
+                    <td><a action="/View" href="/view/{{j.id}}">{{j.destination}}</a></td>
+                    <td>{{j.start_date}}</td>
+                    <td>{{j.end_date}}</td> 
+                    <td>{{j.plan}}</td>
+                    
+                    <td><a action="/edit/" href="/delete/{{j.id}}">Remove</a>  | <a action="/edit/" href="/edit/{{j.id}}">Edit</a></td>
+                    {% endif %}
+                    {% endfor %}  
+                </tr>
+            </table>     
+        </div>
+
+        <div class="everyones_trips">
+            <h2>Everyone's Trips:</h2>
+            <table class="all_trips">
+                <tr>
+                    <th>Destination</th> 
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Plan</th>
+                    <th>Action</th>
+                </tr>
+                {% for j in trips %}
+                {% if request.session.user_id != j.user.id %}
+                <tr>
+                    <td><a action="/View" href="/view/{{j.id}}">{{j.destination}}</a></td>
+                    <td>{{j.start_date}}</td>
+                    <td>{{j.end_date}}</td> 
+                    <td>{{j.plan}}</td>
+                    
+                    <td><a action="/join/" href="/join/{{j.id}}">Join</a> 
+                    {% endif %}
+                    {% endfor %}  
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</body>
+</html>
+
+<style>
+
+.container{
+    padding: 40px;
+    height: 850px;
+    margin: 50px;    
+    width: 810px;
+    border: 2px solid grey;
+    background-color: rgb(137, 201, 201);
+    overflow: auto;
+    padding: 80px;
+}
+h2{
+    text-align: left;
+}
+.everyones_trips, tr, th, td{
+    outline: 2px solid black;
+    height: 50px;
+    width: 800px;
+    text-align: center;
+    margin-top: 250px;
+}
+.all_trips, tr,th,td{
+    outline: 2px solid black;
+    height: 50px;
+    width: 800px;
+    text-align: center;
+}
+.your_trips, tr, th, td{
+    outline: 2px solid black;
+    height: 50px;
+    width: 800px;
+    text-align: center;
+}
+.new_trip{
+    margin-left: 50px;
+    border: 2px solid black;
+    width: 140px;
+    font-size: 14px;
+}
+.header{
+    height: 90px;
+    width: 800px;
+    border: 2px solid black;
+}
+.header h1{
+    margin-top: 25px;
+}
+.header_left{
+    height: 90px;
+    width: 500px;
+    display: inline-block;
+}
+.header_right{
+    height: 90px;
+    width: 250px;
+    display: inline-block;
+    vertical-align: top;
+}
+.logout_link{
+    height: 20px;
+    width: 50px;
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 1=50px;
+    margin-top: 40px;
+    display: inline-block;
+}
+.excessive_div{
+    display: inline-block;
+    vertical-align: bottom;
+    margin-top: 20px;
+}
+</style> 
